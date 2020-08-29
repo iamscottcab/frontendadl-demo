@@ -41,7 +41,7 @@ function init() {
     var loader = new GLTFLoader();
 
     // Load the file
-    loader.load('models/cubes.gltf', (gltf) => {
+    loader.load('models/scene.gltf', (gltf) => {
 
         // Use the blender camera for our scene (nice no more creating one!)
         camera = gltf.cameras[0];
