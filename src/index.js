@@ -6,6 +6,8 @@ var scene;
 var camera;
 
 var renderer;
+var clock;
+var mixer;
 
 //#region  canvas-resize
 let desiredAspectRatio = 1.45;
@@ -32,20 +34,26 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     // Some nice to haves for resize and lighting (you can ignore this if you're watching the demo)
-    scene.background = new THREE.Color('rgb(115, 137, 174)');
+    scene.background = new THREE.Color('rgb(254, 254, 235)');
     renderer.physicallyCorrectLights = true;
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);  
+    renderer.setSize(window.innerWidth, window.innerHeight);
     
     // Import the loader
     var loader = new GLTFLoader();
 
     // Load the file
-    loader.load('models/cubes.gltf', (gltf) => {
+    loader.load('models/mixamo.gltf', (gltf) => {
 
         // Use the blender camera for our scene (nice no more creating one!)
         camera = gltf.cameras[0];
         initialCameraFOV = camera.fov;
+
+        // Play some animations!
+        clock = new THREE.Clock(true);
+        mixer = new THREE.AnimationMixer(gltf.scene.children.find(child => child.name === 'Armature'));
+        const anim = mixer.clipAction(gltf.animations[0]);
+        anim.play();
 
         // Add the whole blender scene to the three.js scene!
         scene.add(gltf.scene);
@@ -61,6 +69,7 @@ function init() {
 function render() {
     // Our render function is so tidy!!!
     requestAnimationFrame(render);
+    mixer.update(clock.getDelta());
     renderer.render(scene, camera);
 };
 
