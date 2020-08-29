@@ -1,0 +1,18 @@
+{
+  "name": "frontendadl-demo",
+  "version": "1.0.0",
+  "private": "true",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "three": "^0.120.0"
+  }
+}
