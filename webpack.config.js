@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.gltf$/,
+        test: /\.gltf$/i,
         use: [
           {
             loader: 'file-loader'
