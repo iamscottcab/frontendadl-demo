@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": "true",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "build": "webpack",
     "watch": "webpack --watch"
   },
   "devDependencies": {
+    "file-loader": "^6.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
