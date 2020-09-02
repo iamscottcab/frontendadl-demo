@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { WEBGL } from 'three/examples/jsm/WebGL';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
+import gltfPath from './models/scene.gltf';
+
 var scene;
 var camera;
 
@@ -41,7 +43,7 @@ function init() {
     var loader = new GLTFLoader();
 
     // Load the file
-    loader.load('models/scene.gltf', (gltf) => {
+    loader.load(gltfPath, (gltf) => {
 
         // Use the blender camera for our scene (nice no more creating one!)
         camera = gltf.cameras[0];
